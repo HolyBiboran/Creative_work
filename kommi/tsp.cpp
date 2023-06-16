@@ -96,7 +96,6 @@ void TSP::on_Btn_Add_Top_clicked()
     }
 }
 
-// функция для обработки событий кнопки "Добавить ребро (ориентированный)"
 void TSP::on_Btn_Add_Edge_1_clicked()
 {
     ui->L_Errors->setText("");
@@ -112,11 +111,11 @@ void TSP::on_Btn_Add_Edge_1_clicked()
         int weight = new_edge.toInt();
         if(from == -1 || to == -1 || weight == 0)
         {
-            ui->L_Errors->setText("Заполните пустые поля Добавить ребро (->)!");
+            ui->L_Errors->setText("FILL ADD EDGE INDICES (->)!");
         }
         else if(from + 1 > knot_count || to + 1 > knot_count)
         {
-            ui->L_Errors->setText("Введеной вершины в графе нет!");
+            ui->L_Errors->setText("VERTICE DOES NOT EXIST");
         }
         else
         {
@@ -131,7 +130,6 @@ void TSP::on_Btn_Add_Edge_1_clicked()
     ui->LE_Add_Edge_1_Top_2->setText("");
     ui->LE_Add_Edge_1_Weight->setText("");
 }
-// функция для обработки событий кнопки "Добавить ребро (не ориентированный)"
 void TSP::on_Btn_Add_Edge_2_clicked()
 {
     ui->L_Errors->setText("");
@@ -147,11 +145,11 @@ void TSP::on_Btn_Add_Edge_2_clicked()
         int weight = new_edge.toInt();
         if(from == -1 || to == -1 || weight == 0)
         {
-            ui->L_Errors->setText("Заполните пустые поля Добавить ребро (<->)!");
+            ui->L_Errors->setText("FILL ADD EDGE INDICES(<->)!");
         }
         else if(from + 1 > knot_count || to + 1 > knot_count)
         {
-            ui->L_Errors->setText("Введеной вершины в графе нет!");
+            ui->L_Errors->setText("VERTICE DOES NOT EXIST");
         }
         else {
             EDGE edge(tops[from].x, tops[from].y, tops[to].x, tops[to].y, weight, 0);
@@ -298,13 +296,13 @@ void TSP::on_Btn_Calculate_clicked()
             }
         }
         ui->L_Result->setText(path);
-        QString result = "Длина пути = ";
+        QString result = "PATH LENGTH = ";
         result += QString::number(sum);
         ui->L_Path_length->setText(result);
     }
     catch(...)
     {
-        ui->L_Result->setText("Error: Невозможно вычилить оптимальный путь");
+        ui->L_Result->setText("Error: IMPOSSIBLE TO CALCULATE THE OPTIMAL PATH");
     }
     ui->LE_Del_Top_index->setText("");
     ui->LE_Add_Edge_1_Top_1->setText("");
@@ -326,11 +324,11 @@ void TSP::on_Btn_Del_Top_clicked()
         int del_index = del.toInt()-1;
         if(del_index == -1)
         {
-            ui->L_Errors->setText("Заполните пустые поля Удалить вершину!");
+            ui->L_Errors->setText("FILL DELETE VERTICE INDEX");
         }
         else if(del_index+1>knot_count)
         {
-            ui->L_Errors->setText("Введеной вершины в графе нет!");
+            ui->L_Errors->setText("VERTICE DOES NOT EXIST");
         }
         else
         {
